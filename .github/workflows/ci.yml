@@ -23,7 +23,7 @@ jobs:
         run: |
           yarn install
 
-      - name: Run Pre-Commit with Lefthook
+      - name: Run Pre-merge with Lefthook
         run: |
           yarn lefthook run pre-merge
 
