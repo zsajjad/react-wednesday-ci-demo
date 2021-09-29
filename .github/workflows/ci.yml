@@ -9,7 +9,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -23,9 +23,9 @@ jobs:
         run: |
           yarn install
 
-      - name: Install node modules
+      - name: Run Pre-Commit with Lefthook
         run: |
-          yarn lefthook run pre-commit
+          yarn lefthook run pre-merge
 
       - name: Run test
         run: |
