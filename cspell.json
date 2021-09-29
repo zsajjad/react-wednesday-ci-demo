@@ -1,0 +1,27 @@
+{
+  // language - current active spelling language
+  "language": "en",
+  // words - list of words to be always considered correct
+  "words": [
+    "Checkmark",
+    "Colorstr",
+    "formatjs",
+    "lazyload",
+    "linaria",
+    "middlewares",
+    "pluralrules",
+    "progid",
+    "relativetimeformat",
+    "Sajjad",
+    "Swipeable",
+    "textfield",
+    "unist",
+    "upsert",
+    "Zain",
+    "formik"
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    "./public/animations"
+  ]
+}
