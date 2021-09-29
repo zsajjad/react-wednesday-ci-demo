@@ -15,9 +15,23 @@ pre-commit:
     spelling:
       glob: '*.{js,ts,jsx,tsx,md}'
       run: yarn cspell {staged_files}
-    markdown-link-check:
-      glob: '*.md'
-      run: npx markdown-link-check {staged_files}
+
+pre-merge:
+  parallel: true
+  skip_output: true
+  commands:
+    type-check:
+      glob: '*.{ts,tsx}'
+      run: yarn type-check
+    lint:
+      glob: '*.{js,ts,jsx,tsx}'
+      run: yarn lint:eslint:fix
+    style-lint:
+      glob: '*.{js,ts,jsx,tsx}'
+      run: yarn lint:css
+    spelling:
+      glob: '*.{js,ts,jsx,tsx,md}'
+      run: yarn cspell **/*.{js,ts,jsx,tsx,md}
 
 pre-merge:
   parallel: true
@@ -45,3 +59,12 @@ commit-msg:
       run: npx commitlint --edit
     spell-check:
       run: yarn cspell --no-summary {1}
+
+# pre-push:
+#   parallel: true
+#   commands:
+#     test:
+#       run: yarn test
+#     packages-audit:
+#       run: yarn audit
+
