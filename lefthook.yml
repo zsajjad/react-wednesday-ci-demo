@@ -1,0 +1,36 @@
+# lefthook.yml
+
+pre-commit:
+  parallel: true
+  commands:
+    type-check:
+      glob: '*.{ts,tsx}'
+      run: yarn type-check
+    lint:
+      glob: '*.{js,ts,jsx,tsx}'
+      run: yarn lint:eslint:fix {staged_files}
+    style-lint:
+      glob: '*.{js,ts,jsx,tsx}'
+      run: yarn lint:css {staged_files}
+    spelling:
+      glob: '*.{js,ts,jsx,tsx,md}'
+      run: yarn cspell {staged_files}
+    markdown-link-check:
+      glob: '*.md'
+      run: npx markdown-link-check {staged_files}
+
+commit-msg:
+  parallel: true
+  commands:
+    lint-commit-msg:
+      run: npx commitlint --edit
+    spell-check:
+      run: yarn cspell --no-summary {1}
+# pre-push:
+#   parallel: true
+#   commands:
+#     test:
+#       run: yarn test
+#     packages-audit:
+#       run: yarn audit
+
